@@ -1,0 +1,37 @@
+[
+  {
+    "blog_title": "First Blog",
+    "blog_body": "Test Blog",
+    "user_id": 1
+  },
+  {
+    "blog_title": "Second Blog",
+    "blog_body": "Test Blog",
+    "user_id": 1
+  },
+  {
+    "blog_title": "Second Blog",
+    "blog_body": "Test Blog",
+    "user_id": 2
+  },
+  {
+    "blog_title": "Third Blog",
+    "blog_body": "Test Blog",
+    "user_id": 2
+  },
+  {
+    "blog_title": "Fourth Blog",
+    "blog_body": "Test Blog",
+    "user_id": 2
+  },
+  {
+    "blog_title": "Fifth Blog",
+    "blog_body": "Test Blog",
+    "user_id": 2
+  },
+  {
+    "blog_title": "Sixth Blog",
+    "blog_body": "Test Blog",
+    "user_id": 3
+  }  
+]

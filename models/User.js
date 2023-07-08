@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const bcrypt = require("bycrypt");
+const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 
 // function for comparing entered password at login to stored user password

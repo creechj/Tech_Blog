@@ -29,18 +29,11 @@ Blog.init(
     },
   },
   {
-    hooks: {
-    // hash password when new user created
-      beforeCreate: async (newUser) => {
-        newUser.password = await bcrypt.hash(newUser.password, 10);
-        return newUser;
-      },
-    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: 'blog',
   }
 );
 
