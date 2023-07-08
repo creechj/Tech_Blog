@@ -4,7 +4,7 @@ const { Blog } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // route for dasboard with user's posts available to edit/delete
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     const userPosts = await Blog.findAll({
       where: {
@@ -31,23 +31,44 @@ router.post("/", withAuth, async (req, res) => {
       user_id: req.body.user_id,
     });
     res.redirect("/dashboard");
+    // res.status(200).json({ message: "Post created" })
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
 // delete blog post route
-router.delete('/', async (req, res) => {
-    try {
-        const blogPost = await Blog.destroy({
-            where: {
-                id: req.body.id,
-            },
-        });
-        res.status(200).json({ message: 'Post deleted' });
-    } catch (err) {
-        res.status(500).json(err);
-    }
+router.delete("/", withAuth, async (req, res) => {
+  try {
+    const blogPost = await Blog.destroy({
+      where: {
+        id: req.body.id,
+      },
+    });
+    // res.status(200).json({ message: "Post deleted" });
+    res.redirect("/dashboard");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// edit blog post route
+router.put("/", withAuth, async (req, res) => {
+  try {
+    const blogPost = await Blog.update(
+      {
+        blog_title: req.body.blog_title,
+        blog_body: req.body.blog_body,
+      },
+      {
+        where: { id: req.body.id },
+      }
+    );
+    // res.status(200).json({ message: "Post Updated" });
+    res.redirect("/dashboard");
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
