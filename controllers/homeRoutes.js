@@ -17,4 +17,14 @@ router.get('/', async (req, res) => {
     }
 })
 
+// redirect for login route if user already logged in
+router.get('/login', (req, res) => {
+    if (req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('login');
+  });
+
 module.exports = router;
