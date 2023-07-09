@@ -1,13 +1,21 @@
-const dashboardHandler = async (event) => {
-  const response = await fetch("/api/users/dashboard", {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
-  if (response.ok) {
-    document.location.replace('/dashboard');
-  } else {
-    alert('Not working');
-  }
+const editPost = async (id) => {
+  // const response = await fetch("/api/users/dashboard", {
+  //   method: "GET",
+  //   body: this.id,
+  //   headers: { "Content-Type": "application/json" },
+  // });
+  // document.location.replace("/dashboard");
+  console.log(id);
 };
 
-document.querySelector("#dashboard").addEventListener("click", dashboardHandler);
+const deletePost = async (id) => {
+  // const response = await fetch("/api/users/dashboard", {
+  //   method: "GET",
+  //   headers: { "Content-Type": "application/json" },
+  // });
+  // document.location.replace("/dashboard");
+  console.log(id);
+};
+
+// document.querySelector(".dashboard-edit").addEventListener("click", editPost)
+// document.querySelectorAll(".dashboard-delete").addEventListener("click", deletePost);

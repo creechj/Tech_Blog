@@ -66,7 +66,7 @@ nav a:hover {
   background-color: var(--dark);
 }
 
-.gallery {
+.blogposts {
   flex: 4;
   background-color: #fff;
   padding: 50px;

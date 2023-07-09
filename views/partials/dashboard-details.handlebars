@@ -1,10 +1,7 @@
-<section id={{id}} class="card">   
-    <div class="card-body">
-      <h3>{{blog_title}} Posted on:{{format_date updatedAt}} by {{username}}</h3>
+    <div id={{id}} class="card card-body">
+      <h3>{{blog_title}}</h3>
+      <p>Posted on:{{format_date updatedAt}} by {{user.username}}</p>
       <p>{{blog_body}}</p>
-      <div>
-        <button class="btn-no-style">Edit</button>
-        <button class="btn-no-style">Delete</button>
-      </div>
+        <button class="btn-no-style dashboard-edit" onclick="editPost(this.parentNode.id)">Edit</button>
+        <button class="btn-no-style dashboard-delete" onclick="deletePost(this.parentNode.id)">Delete</button>
     </div>
-</section>
