@@ -36,7 +36,7 @@ router.get("/dashboard", async (req, res) => {
   try {
     const userPosts = await Blog.findAll({
       where: {
-        user_id: 1,
+        user_id: 2,
       },
       include: {
         model: User, 
@@ -55,7 +55,7 @@ router.get("/dashboard", async (req, res) => {
 });
 
 // create blog post route
-router.post("/dashboard", withAuth, async (req, res) => {
+router.post("/dashboard", async (req, res) => {
   try {
     const newBlog = await Blog.create({
       blog_title: req.body.blog_title,
@@ -70,7 +70,7 @@ router.post("/dashboard", withAuth, async (req, res) => {
 });
 
 // delete blog post route
-router.delete("/dashboard", withAuth, async (req, res) => {
+router.delete("/dashboard", async (req, res) => {
   try {
     const blogPost = await Blog.destroy({
       where: {
@@ -85,7 +85,7 @@ router.delete("/dashboard", withAuth, async (req, res) => {
 });
 
 // edit blog post route
-router.put("/dashboard", withAuth, async (req, res) => {
+router.put("/dashboard", async (req, res) => {
   try {
     const blogPost = await Blog.update(
       {
