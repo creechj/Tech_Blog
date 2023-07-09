@@ -10,12 +10,16 @@ router.get("/", withAuth, async (req, res) => {
       where: {
         user_id: req.session.user_id,
       },
+      include: {
+        model: User, 
+        attributes: ['username']
+     }
     });
     const posts = userPosts.map((post) => post.get({ plain: true }));
-    // res.render('dashboard', {
-    //     posts,
-    // });
-    res.status(200).json(posts);
+    res.render('dashboard', {
+        posts,
+    });
+    // res.status(200).json(posts);
   } catch (err) {
     res.status(500).json({ message: "No blog posts yet. Add a post!" });
     return;
