@@ -1,11 +1,13 @@
-// const editPost = async (id) => {
-//   const response = await fetch("/api/users/dashboard", {
-//     method: "PUT",
-//     body: JSON.stringify({ username, password }),
-//     headers: { "Content-Type": "application/json" },
-//   });
-//   document.location.replace("/dashboard");
-// };
+const editPost = async (id) => {
+  const newTitle = document.querySelector(`#title-${id}`).value;
+  const newBody = document.querySelector(`#body-${id}`).value;
+
+  const response = await fetch("/dashboard", {
+    method: "PUT",
+    body: JSON.stringify({ blog_title: newTitle, blog_body: newBody, id: id }),
+    headers: { "Content-Type": "application/json" },
+  }).then(window.location.replace('/dashboard'));
+};
 
 const deletePost = async (id) => {
   const response = await fetch("/dashboard", {

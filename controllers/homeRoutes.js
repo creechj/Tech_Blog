@@ -36,7 +36,7 @@ router.get("/dashboard", async (req, res) => {
   try {
     const userPosts = await Blog.findAll({
       where: {
-        user_id: 2,
+        user_id: 1,
       },
       include: {
         model: User, 

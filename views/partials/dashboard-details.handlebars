@@ -1,7 +1,7 @@
     <div id={{id}} class="card card-body">
-      <textarea>{{blog_title}}</textarea>
+      <textarea id={{append_titleid id}}>{{blog_title}}</textarea>
       <p>Posted on:{{format_date updatedAt}} by {{user.username}}</p>
-      <textarea>{{blog_body}}</textarea>
+      <textarea id={{append_bodyid id}}>{{blog_body}}</textarea>
         <button class="btn-no-style dashboard-edit" onclick="editPost(this.parentNode.id)">Edit</button>
         <button class="btn-no-style dashboard-delete" onclick="deletePost(this.parentNode.id)">Delete</button>
     </div>
