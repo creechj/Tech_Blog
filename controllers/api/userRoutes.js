@@ -28,16 +28,16 @@ router.post("/login", async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-
       res.json({ user: userData, message: "Login successful." });
     });
+    // res.redirect("/");
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
 // new user signup route. Ends any current sessions, creates new user, creates new session
-router.put("/signup", async (req, res) => {
+router.post("/signup", async (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy();
   } else {

@@ -1,14 +1,13 @@
 const router = require("express").Router();
-const { User } = require("../../models");
-const { Blog } = require("../../models");
+const { User, Blog } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // route for dasboard with user's posts available to edit/delete
-router.get("/", withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const userPosts = await Blog.findAll({
       where: {
-        user_id: req.session.user_id,
+        user_id: 1,
       },
       include: {
         model: User, 
@@ -32,7 +31,7 @@ router.post("/", withAuth, async (req, res) => {
     const newBlog = await Blog.create({
       blog_title: req.body.blog_title,
       blog_body: req.body.blog_body,
-      user_id: req.body.user_id,
+      user_id: req.session.user_id,
     });
     res.redirect("/dashboard");
     // res.status(200).json({ message: "Post created" })

@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../models');
-const { Blog } = require('../models');
+const { User, Blog } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -12,10 +11,10 @@ router.get('/', async (req, res) => {
           }
         });
         const blogs = blogPost.map((blog) => blog.get({ plain: true}));
-        // res.render('homepage', {
-        //     blogs,
-        // });
-        res.status(200).json(blogs);
+        res.render('homepage', {
+            blogs,
+        });
+        // res.status(200).json(blogs);
     } catch (err) {
         res.status(500).json({ message: 'No blog posts yet. Login or signup to create a post.'});
         return;

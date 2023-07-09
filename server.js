@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
+const helpers = require('./utils/helpers');
 
 const sequelize = require('./config/connection');
 
@@ -13,7 +14,7 @@ const app = express();
 // allow Heroku port selection
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create();
+const hbs = exphbs.create({ helpers });
 
 // Session storage
 const sess = {
