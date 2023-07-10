@@ -1,8 +1,8 @@
 const loginHandler = async (event) => {
   event.preventDefault();
 
-  const username = document.querySelector('#loginusername').value.trim();
-  const password = document.querySelector('#loginpassword').value.trim();
+  const username = document.getElementById('loginusername').value.trim();
+  const password = document.getElementById('loginpassword').value.trim();
   
 
   if (username && password) {
@@ -15,7 +15,7 @@ const loginHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/');
     } else {
-      alert('Could not log in.');
+      console.log(response);
     }
   }
 };

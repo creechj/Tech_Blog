@@ -13,8 +13,8 @@ router.get('/', async (req, res) => {
         const blogs = blogPost.map((blog) => blog.get({ plain: true}));
         res.render('homepage', {
             blogs,
+            logged_in: req.session.logged_in,
         });
-        // res.status(200).json(blogs);
     } catch (err) {
         res.status(500).json({ message: 'No blog posts yet. Login or signup to create a post.'});
         return;
@@ -32,11 +32,11 @@ router.get('/login', (req, res) => {
   });
 
 // route for dasboard with user's posts available to edit/delete
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const userPosts = await Blog.findAll({
       where: {
-        user_id: 1,
+        user_id: req.session.user_id,
       },
       include: {
         model: User, 
@@ -46,10 +46,10 @@ router.get("/dashboard", async (req, res) => {
     const posts = userPosts.map((post) => post.get({ plain: true }));
     res.render('dashboard', {
         posts,
+        logged_in: req.session.logged_in,
     });
-    // res.status(200).json(posts);
   } catch (err) {
-    res.status(500).json({ message: "No blog posts yet. Add a post!" });
+    res.status(500).json({ message: req.session });
     return;
   }
 });
@@ -63,7 +63,6 @@ router.post("/dashboard", async (req, res) => {
       user_id: req.session.user_id,
     });
     res.redirect("/dashboard");
-    // res.status(200).json({ message: "Post created" })
   } catch (err) {
     res.status(400).json(err);
   }
@@ -77,7 +76,6 @@ router.delete("/dashboard", async (req, res) => {
         id: req.body.id,
       },
     });
-    // res.status(200).json({ message: "Post deleted" });
     res.redirect("/dashboard");
   } catch (err) {
     res.status(500).json(err);
@@ -96,7 +94,6 @@ router.put("/dashboard", async (req, res) => {
         where: { id: req.body.id },
       }
     );
-    // res.status(200).json({ message: "Post Updated" });
     res.redirect("/dashboard");
   } catch (err) {
     res.status(500).json(err);
