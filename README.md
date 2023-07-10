@@ -15,3 +15,6 @@ https://stackoverflow.com/questions/29884654/button-that-refreshes-the-page-on-c
 
 jass.css for normalizing:
 https://github.com/necolas/normalize.css
+
+textarea parameters:
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea

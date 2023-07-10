@@ -11,16 +11,21 @@ const newPost = () => {
   newTemp.style.display = '';
 }
 
+const getRefresh = async () => {
+  const response = await fetch("/dashboard", {
+    method: "GET",
+  }).then(document.location.reload());
+};
+
 const createPost = async () => {
   const newTitle = document.getElementById(`createtitle`).value;
   const newBody = document.getElementById(`createbody`).value;
 
-  const respons = await fetch("/dashboard", {
+  const response = await fetch("/dashboard", {
     method: "POST",
-    body: JSON.stringify({blog_title: newTitle, blog_body: newBody, user_id: 3}),
+    body: JSON.stringify({blog_title: newTitle, blog_body: newBody}),
     headers: { "Content-Type": "application/json" },
-  }).then(document.location.replace('/dashboard'));
-  document.location.reload();
+  }).then(getRefresh());
   initPage();
 }
 
@@ -32,7 +37,7 @@ const editPost = async (id) => {
     method: "PUT",
     body: JSON.stringify({ blog_title: newTitle, blog_body: newBody, id: id }),
     headers: { "Content-Type": "application/json" },
-  }).then(document.location.replace('/dashboard'));
+  }).then(getRefresh());
 };
 
 const deletePost = async (id) => {
@@ -40,8 +45,7 @@ const deletePost = async (id) => {
     method: "DELETE",
     body: JSON.stringify({ id }),
     headers: { "Content-Type": "application/json" },
-  }).then(document.location.replace('/dashboard'));
-  document.location.reload();
+  }).then(getRefresh());
 };
 
 initPage();
