@@ -19,7 +19,7 @@ const createPost = async () => {
     method: "POST",
     body: JSON.stringify({blog_title: newTitle, blog_body: newBody, user_id: 3}),
     headers: { "Content-Type": "application/json" },
-  }).then(window.location.reload());
+  }).then(document.location.replace('/dashboard'));
   initPage();
 }
 
@@ -31,7 +31,7 @@ const editPost = async (id) => {
     method: "PUT",
     body: JSON.stringify({ blog_title: newTitle, blog_body: newBody, id: id }),
     headers: { "Content-Type": "application/json" },
-  }).then(window.location.reload());
+  }).then(document.location.replace('/dashboard'));
 };
 
 const deletePost = async (id) => {
@@ -39,7 +39,7 @@ const deletePost = async (id) => {
     method: "DELETE",
     body: JSON.stringify({ id }),
     headers: { "Content-Type": "application/json" },
-  }).then(window.location.reload());
+  }).then(document.location.replace('/dashboard'));
 };
 
 initPage();

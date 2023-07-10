@@ -13,3 +13,5 @@ https://stackoverflow.com/questions/27842138/get-id-of-parent-element-on-click
 Page refresh:
 https://stackoverflow.com/questions/29884654/button-that-refreshes-the-page-on-click
 
+jass.css for normalizing:
+https://github.com/necolas/normalize.css
