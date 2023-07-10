@@ -1,14 +1,14 @@
 const newTemp = document.getElementById('newtemplate');
-const newPostBtn = document.getElementById('newpost');
+const newPostBtn = document.getElementById('btnnewpost');
 
 const initPage = () => {
-  newTemp.style.visibility = 'hidden';
+  newTemp.style.display = 'none';
   newPostBtn.style.visibility = 'visible';
 };
 
 const newPost = () => {
   newPostBtn.style.visibility= 'hidden';
-  newTemp.style.visibility = 'visible';
+  newTemp.style.display = '';
 }
 
 const createPost = async () => {
@@ -20,6 +20,7 @@ const createPost = async () => {
     body: JSON.stringify({blog_title: newTitle, blog_body: newBody, user_id: 3}),
     headers: { "Content-Type": "application/json" },
   }).then(document.location.replace('/dashboard'));
+  document.location.reload();
   initPage();
 }
 
@@ -40,7 +41,8 @@ const deletePost = async (id) => {
     body: JSON.stringify({ id }),
     headers: { "Content-Type": "application/json" },
   }).then(document.location.replace('/dashboard'));
+  document.location.reload();
 };
 
 initPage();
-document.getElementById('newpost').addEventListener('click', newPost);
+document.getElementById('btnnewpost').addEventListener('click', newPost);

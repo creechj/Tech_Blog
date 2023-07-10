@@ -1,11 +1,7 @@
 :root {
-  --primary: #161718;
+  --primary: #1f1f1f;
   --secondary: #327099;
-  --tertiary: #049ff8;
-  --quatrinary: #6c6b67;
   --light: #e3e4e3;
-  --dark: #182c23;
-  --error: rgb(228, 46, 1);
   --border-radius: 2.5%;
 }
 
@@ -21,7 +17,7 @@ body {
 
 /* header */
 header {
-  padding: 40px;
+  padding: 20px;
   text-align: left;
   background: var(--primary);
   color: var(--light);
@@ -31,6 +27,7 @@ header {
 header h1 {
   max-width: fit-content;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding: 2px;
   border: 5px solid var(--secondary);
   border-radius: var(--border-radius);
 }
@@ -85,32 +82,82 @@ nav a:hover {
 
 /* blog posts */
 main {
-  display: flex;
-  flex-wrap: wrap;
-  flex-grow: 1;
   background-color: var(--primary);
+  display: flex;
+  justify-content: center;
 }
 
 .blogposts {
-  flex: 4;
   background-color: var(--primary);
-  padding: 50px;
+  width: 65%;
+  padding: 20px;
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
-.post {
-  margin: 20px;
-  flex: 0 1 300px;
+.homepost {
+  margin: 10px 0 10px 0;
   border: 5px solid var(--secondary);
   border-radius: var(--border-radius);
-  background-color: var(--light);
-  color: var(--dark);
+  background-color: var(--primary);
+  color: var(--light);
   font-size: 1.4rem;
   text-align: center;
+}
+
+.dbpost {
+  margin: 10px 0 10px 0;
+  padding: 8px;
+  border: 5px solid var(--secondary);
+  border-radius: var(--border-radius);
+  background-color: var(--primary);
+  color: var(--light);
+  font-size: 1.4rem;
+  /* text-align: center; */
+}
+
+textarea {
+  resize: none;
+}
+
+.btndbedit {
+  background-color: var(--secondary);
+  color: var(--light);
+  transition: color 0.1s;
+  border: none;
+  border-radius: 6%;
+}
+
+.btndbedit:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+
+.btndbdel {
+  background-color: #9e1212;
+  color: var(--light);
+  transition: color 0.1s;
+  border: none;
+  border-radius: 6%;
+}
+
+.btndbdel:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+
+#btnnewpost {
+  color: var(--light);
   font-weight: bold;
+  background-color: var(--secondary);
+  width: 25%;
+  transition: color 0.1s;
+}
+
+#btnnewpost:hover {
+  cursor: pointer;
+  opacity: 80%;
 }
 
 /* login page */

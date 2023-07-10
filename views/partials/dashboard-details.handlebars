@@ -1,7 +1,7 @@
-    <div id={{id}} class="post">
-      <textarea id={{append_titleid id}}>{{blog_title}}</textarea>
+    <div id={{id}} class="dbpost">
+      <textarea id={{append_titleid id}} rows="2" cols="30">{{blog_title}}</textarea>
       <p>Posted on: {{format_date updatedAt}} by {{user.username}}</p>
-      <textarea id={{append_bodyid id}}>{{blog_body}}</textarea>
-        <button class="btn-no-style dashboard-edit" onclick="editPost(this.parentNode.id)">Edit</button>
-        <button class="btn-no-style dashboard-delete" onclick="deletePost(this.parentNode.id)">Delete</button>
+      <textarea id={{append_bodyid id}} rows="5" cols="30">{{blog_body}}</textarea>
+        <button class="btndbedit dashboard-edit" onclick="editPost(this.parentNode.id)">Edit</button>
+        <button class="btndbdel dashboard-delete" onclick="deletePost(this.parentNode.id)">Delete</button>
     </div>

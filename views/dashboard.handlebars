@@ -1,12 +1,10 @@
-<section class="posts">
-    <button id="newpost" class="btn">Create New Post</button>
-    <div id="newtemplate" class="post">
-      <textarea id="createtitle">Blog title</textarea>
-      <textarea id="createbody">Blog post</textarea>
-        <button id="createpost" class="btn-no-style" onclick="createPost()">Post</button>
-    </div>
-    {{#each posts as |post|}}
-    {{> dashboard-details}}
-    {{/each}}
-    <script src="/js/dashboard.js"></script>
-</section>
+<button id="btnnewpost" class="btn">Create New Post</button>
+<div id="newtemplate" class="dbpost">
+  <textarea id="createtitle" rows="2" cols="30">New title</textarea>
+  <textarea id="createbody" rows="5" cols="30">New post</textarea>
+  <button id="createpost" class="btndbedit" onclick="createPost()">Post</button>
+</div>
+{{#each posts as |post|}}
+{{> dashboard-details}}
+{{/each}}
+<script src="/js/dashboard.js"></script>
