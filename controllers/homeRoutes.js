@@ -1,35 +1,62 @@
-const router = require('express').Router();
-const { User, Blog } = require('../models');
-const withAuth = require('../utils/auth');
+const router = require("express").Router();
+const { User, Blog, Comment } = require("../models");
+const withAuth = require("../utils/auth");
 
-router.get('/', async (req, res) => {
-    try {
-        const blogPost = await Blog.findAll({
+router.get("/", async (req, res) => {
+  try {
+    const blogPost = await Blog.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+        {
+          model: Comment,
+          attributes: ["comment_body", "createdAt"],
           include: {
-             model: User, 
-             attributes: ['username']
-          }
-        });
-        const blogs = blogPost.map((blog) => blog.get({ plain: true}));
-        res.render('homepage', {
-            blogs,
-            logged_in: req.session.logged_in,
-        });
-    } catch (err) {
-        res.status(500).json({ message: 'No blog posts yet. Login or signup to create a post.'});
-        return;
-    }
-})
+            model: User,
+            attributes: ["username"],
+          },
+        },
+      ],
+    });
+
+    // const blogComments = await Blog.findAll({
+    //   include: {
+    //     model: Comment,
+    //     attributes: ['comment_body', 'createdAt'],
+    //     include: {
+    //       model: User,
+    //       attributes: ['username']
+    //     }
+    //  },
+    // })
+
+    const blogs = blogPost.map((blog) => blog.get({ plain: true }));
+    // const comments = blogComments.map((comment) => comment.get({ plain: true}));
+    // res.render('homepage', {
+    //     blogs,
+    //     logged_in: req.session.logged_in,
+    // });
+    res.status(200).json(blogs);
+  } catch (err) {
+    res.status(500).json({
+      message: err,
+      // 'No blog posts yet. Login or signup to create a post.'
+    });
+    return;
+  }
+});
 
 // redirect for login route if user already logged in
-router.get('/login', (req, res) => {
-    if (req.session.logged_in) {
-      res.redirect('/');
-      return;
-    }
-  
-    res.render('login');
-  });
+router.get("/login", (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect("/");
+    return;
+  }
+
+  res.render("login");
+});
 
 // route for dasboard with user's posts available to edit/delete
 router.get("/dashboard", withAuth, async (req, res) => {
@@ -39,14 +66,14 @@ router.get("/dashboard", withAuth, async (req, res) => {
         user_id: req.session.user_id,
       },
       include: {
-        model: User, 
-        attributes: ['username']
-     }
+        model: User,
+        attributes: ["username"],
+      },
     });
     const posts = userPosts.map((post) => post.get({ plain: true }));
-    res.render('dashboard', {
-        posts,
-        logged_in: req.session.logged_in,
+    res.render("dashboard", {
+      posts,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json({ message: req.session });
@@ -62,7 +89,7 @@ router.post("/dashboard", async (req, res) => {
       blog_body: req.body.blog_body,
       user_id: req.session.user_id,
     });
-    res.redirect('/dashboard');
+    res.redirect("/dashboard");
   } catch (err) {
     res.status(400).json(err);
   }
