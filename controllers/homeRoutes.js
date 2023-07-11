@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { User, Blog, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
+// homepage routes
 router.get("/", async (req, res) => {
   try {
     const blogPost = await Blog.findAll({
@@ -21,30 +22,30 @@ router.get("/", async (req, res) => {
       ],
     });
 
-    // const blogComments = await Blog.findAll({
-    //   include: {
-    //     model: Comment,
-    //     attributes: ['comment_body', 'createdAt'],
-    //     include: {
-    //       model: User,
-    //       attributes: ['username']
-    //     }
-    //  },
-    // })
-
     const blogs = blogPost.map((blog) => blog.get({ plain: true }));
-    // const comments = blogComments.map((comment) => comment.get({ plain: true}));
-    // res.render('homepage', {
-    //     blogs,
-    //     logged_in: req.session.logged_in,
-    // });
-    res.status(200).json(blogs);
+    res.render("homepage", {
+      blogs,
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
     res.status(500).json({
-      message: err,
-      // 'No blog posts yet. Login or signup to create a post.'
+      message: "No blog posts yet. Login or signup to create a post.",
     });
     return;
+  }
+});
+
+// route for comments
+router.post('/', async (req, res) => {
+  try {
+    const newComment = await Comment.create({
+      comment_body: req.body.comment_body,
+      blog_id: req.body.blog_id,
+      user_id: req.body.user_id,
+    });
+    res.redirect("/");
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 
@@ -54,10 +55,10 @@ router.get("/login", (req, res) => {
     res.redirect("/");
     return;
   }
-
   res.render("login");
 });
 
+// dashboard routes
 // route for dasboard with user's posts available to edit/delete
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
