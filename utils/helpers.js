@@ -12,4 +12,12 @@ module.exports = {
     let titleId = `body-${id}`;
     return titleId;
   },
+  append_commentid: (id) => {
+    let commentId = `comment-${id}`;
+    return commentId;
+  },
+  append_postbtnid: (id) => {
+    let postBtnId = `postbtn-${id}`;
+    return postBtnId;
+  },
 };

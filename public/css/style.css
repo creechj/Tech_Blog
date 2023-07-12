@@ -160,6 +160,34 @@ textarea {
   opacity: 80%;
 }
 
+.addbtns {
+  margin: 4px;
+
+}
+.pstbtn {
+  margin: 4px;
+}
+
+.newcomment {
+  text-align: left;
+  margin-left: 5px;
+  width: auto;
+}
+
+.commentbody {
+  text-align: left;
+  margin-left: 10px;
+  background-color: var(--secondary);
+}
+
+.commentheader {
+  text-align: left;
+  margin-left: 10px;
+  font-size: .5em;
+  font-style: italic;
+  font-weight: lighter;
+}
+
 /* login page */
 .login-box {
   margin: 0 0 20px 0;

@@ -36,12 +36,12 @@ router.get("/", async (req, res) => {
 });
 
 // route for comments
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
       comment_body: req.body.comment_body,
       blog_id: req.body.blog_id,
-      user_id: req.body.user_id,
+      user_id: req.session.user_id,
     });
     res.redirect("/");
   } catch (err) {

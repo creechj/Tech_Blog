@@ -2,4 +2,13 @@
   <h2>{{blog_title}}</h2>
   <p>Posted on: {{format_date updatedAt}} by {{user.username}}</p>
   <p>{{blog_body}}</p>
+  {{#each comments as |comment|}}
+    <p class="commentbody">{{comment_body}}</p></n>
+    <p class="commentheader">Comment from {{comment.user.username}} on {{format_date comment.createdAt}}</p>
+  {{/each}}
+  <button id={{append_titleid id}} class="btndbedit addbtns" style="display: none;" onclick="newComment(this.parentNode.id)">Add Comment</button> 
+  <div id={{append_commentid id}} class="newcomment" style="display: none;">
+    <textarea id={{append_bodyid id}} rows="2" cols="30">New comment</textarea>
+    <button id={{append_postbtnid id}} class="btndbedit pstbtn" >Post</button>
+  </div>
 </div>
