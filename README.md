@@ -15,30 +15,32 @@ The Dashboard will now be available with options for creating posts, editing exi
 An option to logout will replace the login option on the navigation menu.
 Users remain logged until logging out manually or letting the session time out.
 
-GitHub Repository can be found here:
-
+GitHub Repository can be found here:  
 https://github.com/creechj/Tech_Blog
+
+Heroku deployment:  
+https://the-tech-blog-bcmvc-6b82048fd8e5.herokuapp.com/
 
 ![Screenshot of Application](./assets/Tech_Blog_Screenshot.png)
 
 ## Credits
 
-Sequelize queries:
+Sequelize queries:  
 https://sequelize.org/docs/v6/advanced-association-concepts/eager-loading/
 
-onClick id retrieval (user: potashin):
+onClick id retrieval (user: potashin):  
 https://stackoverflow.com/questions/27842138/get-id-of-parent-element-on-click
 
-Page refresh:
+Page refresh:  
 https://stackoverflow.com/questions/29884654/button-that-refreshes-the-page-on-click
 
-jass.css for normalizing:
+jass.css for normalizing:  
 https://github.com/necolas/normalize.css
 
-textarea parameters:
+textarea parameters:  
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
 
-forEach with querySelector for comment button display (user: Allen):
+forEach with querySelector for comment button display (user: Allen):  
 https://stackoverflow.com/questions/33178114/using-queryselectorall-to-change-the-style-property-of-multiple-elements
 
 
